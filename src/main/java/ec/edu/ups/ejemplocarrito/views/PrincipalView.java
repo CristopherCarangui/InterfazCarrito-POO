@@ -3,12 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
  */
 package ec.edu.ups.ejemplocarrito.views;
+import ec.edu.ups.ejemplocarrito.controllers.ProductoController;
 
 /**
  *
  * @author USER
  */
 public class PrincipalView extends javax.swing.JFrame {
+    private CrearProductoView crearProductoView;
+    private BuscarProductoView buscarProductoView;
+    private ActualizarProductoView actualizarProductoView;
+    private ProductoController productoController;
 
     /**
      * Creates new form PrincipalView
@@ -50,6 +55,7 @@ public class PrincipalView extends javax.swing.JFrame {
         buscarProductoMenuItem.setMnemonic('s');
         buscarProductoMenuItem.setText("Buscar");
         buscarProductoMenuItem.setToolTipText("");
+        buscarProductoMenuItem.addActionListener(this::buscarProductoMenuItemActionPerformed);
         fileMenu.add(buscarProductoMenuItem);
 
         eliminarProductoMenuItem.setMnemonic('a');
@@ -93,12 +99,33 @@ public class PrincipalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void actualizarProductoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarProductoMenuItemActionPerformed
-        System.exit(0);
+       if(actualizarProductoView== null || !actualizarProductoView.isVisible()){
+           actualizarProductoView = new ActualizarProductoView();
+           productoController = new ProductoController(actualizarProductoView);
+           actualizarProductoView.setVisible(true);
+           desktopPane.add(actualizarProductoView);
+       }
     }//GEN-LAST:event_actualizarProductoMenuItemActionPerformed
 
     private void crearProductoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProductoMenuItemActionPerformed
         // TODO add your handling code here:
+        if(crearProductoView == null || !crearProductoView.isVisible()){    
+           crearProductoView = new CrearProductoView();
+           productoController = new ProductoController(crearProductoView);
+           crearProductoView.setVisible(true);
+           desktopPane.add(crearProductoView);            
+        }
     }//GEN-LAST:event_crearProductoMenuItemActionPerformed
+
+    private void buscarProductoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProductoMenuItemActionPerformed
+        // TODO add your handling code here:
+        if(buscarProductoView == null || !buscarProductoView.isVisible()){
+            buscarProductoView = new BuscarProductoView();
+            productoController = new ProductoController(buscarProductoView);
+            buscarProductoView.setVisible(true);
+            desktopPane.add(buscarProductoView);
+        }
+    }//GEN-LAST:event_buscarProductoMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
