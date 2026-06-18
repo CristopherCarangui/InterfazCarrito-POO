@@ -10,23 +10,15 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Usuario
+ * @author LAB_04
  */
-public class ActualizarProductoView extends javax.swing.JInternalFrame {
+public class EliminarProductoView extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form ActualizarProductoView
+     * Creates new form EliminarProductoView
      */
-    public ActualizarProductoView() {
+    public EliminarProductoView() {
         initComponents();
-    }
-
-    public JButton getBttAct() {
-        return BttAct;
-    }
-
-    public void setBttAct(JButton BttAct) {
-        this.BttAct = BttAct;
     }
 
     public JButton getBttCancelar() {
@@ -35,6 +27,14 @@ public class ActualizarProductoView extends javax.swing.JInternalFrame {
 
     public void setBttCancelar(JButton BttCancelar) {
         this.BttCancelar = BttCancelar;
+    }
+
+    public JButton getBttEliminar() {
+        return BttEliminar;
+    }
+
+    public void setBttEliminar(JButton BttEliminar) {
+        this.BttEliminar = BttEliminar;
     }
 
     public JTextField getTxtCodigo() {
@@ -61,6 +61,8 @@ public class ActualizarProductoView extends javax.swing.JInternalFrame {
         this.TxtPrecio = TxtPrecio;
     }
     
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,7 +72,8 @@ public class ActualizarProductoView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelCodigo = new javax.swing.JLabel();
@@ -79,28 +82,21 @@ public class ActualizarProductoView extends javax.swing.JInternalFrame {
         TxtCodigo = new javax.swing.JTextField();
         TxtNombre = new javax.swing.JTextField();
         TxtPrecio = new javax.swing.JTextField();
-        BttAct = new javax.swing.JButton();
+        BttEliminar = new javax.swing.JButton();
         BttCancelar = new javax.swing.JButton();
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel1.setText("Actualizar Prodcuto");
+        jLabel1.setText("Eliminar Producto");
 
         jLabelCodigo.setText("Codigo");
 
@@ -112,7 +108,7 @@ public class ActualizarProductoView extends javax.swing.JInternalFrame {
 
         TxtPrecio.setText("0.00");
 
-        BttAct.setText("Actualizar");
+        BttEliminar.setText("Eliminar");
 
         BttCancelar.setText("Cancelar");
         BttCancelar.addActionListener(this::BttCancelarActionPerformed);
@@ -122,47 +118,51 @@ public class ActualizarProductoView extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(74, 74, 74)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(BttAct)
-                        .addGap(47, 47, 47)
-                        .addComponent(BttCancelar))
+                        .addGap(153, 153, 153)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelNombre)
-                            .addComponent(jLabelCodigo)
-                            .addComponent(jLabelPrecio, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(TxtCodigo)
-                            .addComponent(TxtNombre)
-                            .addComponent(TxtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                        .addGap(75, 75, 75)
+                        .addComponent(BttEliminar)
+                        .addGap(31, 31, 31)
+                        .addComponent(BttCancelar)))
+                .addContainerGap(139, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelNombre)
+                    .addComponent(jLabelCodigo)
+                    .addComponent(jLabelPrecio, javax.swing.GroupLayout.Alignment.LEADING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TxtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(TxtNombre)
+                    .addComponent(TxtPrecio))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGap(25, 25, 25)
+                .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCodigo)
                     .addComponent(TxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNombre)
                     .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelPrecio)
                     .addComponent(TxtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BttAct)
+                    .addComponent(BttEliminar)
                     .addComponent(BttCancelar))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,8 +188,8 @@ public class ActualizarProductoView extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BttAct;
     private javax.swing.JButton BttCancelar;
+    private javax.swing.JButton BttEliminar;
     private javax.swing.JTextField TxtCodigo;
     private javax.swing.JTextField TxtNombre;
     private javax.swing.JTextField TxtPrecio;
@@ -198,6 +198,7 @@ public class ActualizarProductoView extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelPrecio;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

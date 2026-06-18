@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
  */
 package ec.edu.ups.ejemplocarrito.views;
+import ec.edu.ups.carrito.dao.ProductoDAOMemoria;
 import ec.edu.ups.ejemplocarrito.controllers.ProductoController;
+
 
 /**
  *
@@ -13,13 +15,24 @@ public class PrincipalView extends javax.swing.JFrame {
     private CrearProductoView crearProductoView;
     private BuscarProductoView buscarProductoView;
     private ActualizarProductoView actualizarProductoView;
+    private EliminarProductoView eliminarProductoView;
     private ProductoController productoController;
+    private ProductoDAOMemoria productoDAO;
 
     /**
      * Creates new form PrincipalView
      */
     public PrincipalView() {
         initComponents();
+        crearProductoView = new CrearProductoView();
+        productoDAO = new ProductoDAOMemoria();
+        productoController = new ProductoController(crearProductoView,productoDAO);
+        buscarProductoView = new BuscarProductoView();
+        productoController = new ProductoController(buscarProductoView,productoDAO);
+        actualizarProductoView = new ActualizarProductoView();
+        productoController = new ProductoController(actualizarProductoView,productoDAO);
+        eliminarProductoView = new EliminarProductoView();
+        productoController = new ProductoController(eliminarProductoView,productoDAO);
     }
 
     /**
@@ -60,6 +73,7 @@ public class PrincipalView extends javax.swing.JFrame {
 
         eliminarProductoMenuItem.setMnemonic('a');
         eliminarProductoMenuItem.setText("Eliminar");
+        eliminarProductoMenuItem.addActionListener(this::eliminarProductoMenuItemActionPerformed);
         fileMenu.add(eliminarProductoMenuItem);
 
         actualizarProductoMenuItem.setMnemonic('x');
@@ -99,9 +113,8 @@ public class PrincipalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void actualizarProductoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarProductoMenuItemActionPerformed
-       if(actualizarProductoView== null || !actualizarProductoView.isVisible()){
-           actualizarProductoView = new ActualizarProductoView();
-           productoController = new ProductoController(actualizarProductoView);
+       if( !actualizarProductoView.isVisible()){
+           desktopPane.remove(actualizarProductoView);
            actualizarProductoView.setVisible(true);
            desktopPane.add(actualizarProductoView);
        }
@@ -109,9 +122,8 @@ public class PrincipalView extends javax.swing.JFrame {
 
     private void crearProductoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearProductoMenuItemActionPerformed
         // TODO add your handling code here:
-        if(crearProductoView == null || !crearProductoView.isVisible()){    
-           crearProductoView = new CrearProductoView();
-           productoController = new ProductoController(crearProductoView);
+        if(!crearProductoView.isVisible()){ 
+           desktopPane.remove(crearProductoView);
            crearProductoView.setVisible(true);
            desktopPane.add(crearProductoView);            
         }
@@ -119,13 +131,21 @@ public class PrincipalView extends javax.swing.JFrame {
 
     private void buscarProductoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarProductoMenuItemActionPerformed
         // TODO add your handling code here:
-        if(buscarProductoView == null || !buscarProductoView.isVisible()){
-            buscarProductoView = new BuscarProductoView();
-            productoController = new ProductoController(buscarProductoView);
+        if( !buscarProductoView.isVisible()){
+            desktopPane.remove(buscarProductoView);
             buscarProductoView.setVisible(true);
             desktopPane.add(buscarProductoView);
         }
     }//GEN-LAST:event_buscarProductoMenuItemActionPerformed
+
+    private void eliminarProductoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarProductoMenuItemActionPerformed
+        // TODO add your handling code here:
+        if(!eliminarProductoView.isVisible()){
+            desktopPane.remove(eliminarProductoView);
+            eliminarProductoView.setVisible(true);
+            desktopPane.add(eliminarProductoView);
+        }
+    }//GEN-LAST:event_eliminarProductoMenuItemActionPerformed
 
     /**
      * @param args the command line arguments

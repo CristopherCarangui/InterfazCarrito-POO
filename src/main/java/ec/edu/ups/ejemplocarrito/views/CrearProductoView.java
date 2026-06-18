@@ -5,6 +5,7 @@
 package ec.edu.ups.ejemplocarrito.views;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -175,7 +176,9 @@ public class CrearProductoView extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_BttCancelarActionPerformed
-
+    public void mostrarInformacion(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BttAceptar;

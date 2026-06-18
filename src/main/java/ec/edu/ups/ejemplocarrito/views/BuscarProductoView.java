@@ -5,6 +5,7 @@
 package ec.edu.ups.ejemplocarrito.views;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -19,6 +20,31 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
     public BuscarProductoView() {
         initComponents();
     }
+
+    public JButton getBttAceptar() {
+        return BttAceptar;
+    }
+
+    public void setBttAceptar(JButton BttAceptar) {
+        this.BttAceptar = BttAceptar;
+    }
+
+    public JTextField getTxtNombre() {
+        return TxtNombre;
+    }
+
+    public void setTxtNombre(JTextField TxtNombre) {
+        this.TxtNombre = TxtNombre;
+    }
+
+    public JTextField getTxtPrecio() {
+        return TxtPrecio;
+    }
+
+    public void setTxtPrecio(JTextField TxtPrecio) {
+        this.TxtPrecio = TxtPrecio;
+    }
+    
 
     public JButton getBttBuscar() {
         return BttBuscar;
@@ -53,11 +79,23 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabelPregunta = new javax.swing.JLabel();
         TxtBuscarProducto = new javax.swing.JTextField();
         BttBuscar = new javax.swing.JButton();
         BttCancelar = new javax.swing.JButton();
+        jLabelCodigo = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        TxtNombre = new javax.swing.JTextField();
+        TxtPrecio = new javax.swing.JTextField();
+        BttAceptar = new javax.swing.JButton();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setBackground(new java.awt.Color(102, 102, 102));
         setClosable(true);
@@ -69,12 +107,23 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
 
         jLabelPregunta.setText("Que producto desea Buscar?");
 
-        TxtBuscarProducto.setText("Buscar...");
+        TxtBuscarProducto.setText("0");
 
         BttBuscar.setText("Buscar");
+        BttBuscar.addActionListener(this::BttBuscarActionPerformed);
 
         BttCancelar.setText("Cancelar");
         BttCancelar.addActionListener(this::BttCancelarActionPerformed);
+
+        jLabelCodigo.setText("Codigo");
+
+        jLabel2.setText("Nombre");
+
+        jLabel3.setText("Precio");
+
+        TxtPrecio.setText("0.00");
+
+        BttAceptar.setText("Aceptar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,17 +136,28 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(113, 113, 113)
-                        .addComponent(jLabelPregunta))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(78, 78, 78)
-                            .addComponent(BttBuscar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BttCancelar))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(96, 96, 96)
-                            .addComponent(TxtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(112, Short.MAX_VALUE))
+                        .addComponent(jLabelPregunta)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelCodigo)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BttAceptar)
+                        .addGap(47, 47, 47)
+                        .addComponent(BttCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(TxtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtBuscarProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                            .addComponent(TxtPrecio))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BttBuscar)))
+                .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,12 +167,23 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelPregunta)
                 .addGap(18, 18, 18)
-                .addComponent(TxtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BttBuscar)
-                    .addComponent(BttCancelar))
-                .addContainerGap(93, Short.MAX_VALUE))
+                    .addComponent(TxtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelCodigo)
+                    .addComponent(BttBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(TxtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BttCancelar)
+                    .addComponent(BttAceptar))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,12 +194,26 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_BttCancelarActionPerformed
 
+    private void BttBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BttBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BttBuscarActionPerformed
+    public void mostrarInformacion(String mensaje){
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BttAceptar;
     private javax.swing.JButton BttBuscar;
     private javax.swing.JButton BttCancelar;
     private javax.swing.JTextField TxtBuscarProducto;
+    private javax.swing.JTextField TxtNombre;
+    private javax.swing.JTextField TxtPrecio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelCodigo;
     private javax.swing.JLabel jLabelPregunta;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
