@@ -121,6 +121,9 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Precio");
 
+        TxtNombre.setEditable(false);
+
+        TxtPrecio.setEditable(false);
         TxtPrecio.setText("0.00");
 
         BttAceptar.setText("Aceptar");

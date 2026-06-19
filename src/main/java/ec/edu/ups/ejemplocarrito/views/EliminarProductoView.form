@@ -74,23 +74,33 @@
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="BttCancelar" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="jLabelCodigo" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabelPrecio" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabelNombre" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="TxtNombre" min="-2" pref="187" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="TxtCodigo" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                                  <Component id="BttBuscar" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="TxtPrecio" min="-2" pref="187" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="139" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabelNombre" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelCodigo" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelPrecio" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="TxtCodigo" pref="187" max="32767" attributes="0"/>
-                      <Component id="TxtNombre" max="32767" attributes="0"/>
-                      <Component id="TxtPrecio" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -103,6 +113,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TxtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BttBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -119,7 +130,7 @@
                       <Component id="BttEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BttCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <EmptySpace pref="63" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -169,6 +180,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BttCancelarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="BttBuscar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
