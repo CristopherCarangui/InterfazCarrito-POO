@@ -21,20 +21,12 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
         initComponents();
     }
 
-    public JButton getBttCancelar() {
-        return BttCancelar;
+    public JButton getBttBuscar() {
+        return BttBuscar;
     }
 
-    public void setBttCancelar(JButton BttCancelar) {
-        this.BttCancelar = BttCancelar;
-    }
-
-    public JButton getBttEliminar() {
-        return BttEliminar;
-    }
-
-    public void setBttEliminar(JButton BttEliminar) {
-        this.BttEliminar = BttEliminar;
+    public void setBttBuscar(JButton BttBuscar) {
+        this.BttBuscar = BttBuscar;
     }
 
     public JTextField getTxtCodigo() {
@@ -45,21 +37,7 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
         this.TxtCodigo = TxtCodigo;
     }
 
-    public JTextField getTxtNombre() {
-        return TxtNombre;
-    }
-
-    public void setTxtNombre(JTextField TxtNombre) {
-        this.TxtNombre = TxtNombre;
-    }
-
-    public JTextField getTxtPrecio() {
-        return TxtPrecio;
-    }
-
-    public void setTxtPrecio(JTextField TxtPrecio) {
-        this.TxtPrecio = TxtPrecio;
-    }
+    
     
     
 
@@ -77,13 +55,7 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabelCodigo = new javax.swing.JLabel();
-        jLabelNombre = new javax.swing.JLabel();
-        jLabelPrecio = new javax.swing.JLabel();
         TxtCodigo = new javax.swing.JTextField();
-        TxtNombre = new javax.swing.JTextField();
-        TxtPrecio = new javax.swing.JTextField();
-        BttEliminar = new javax.swing.JButton();
-        BttCancelar = new javax.swing.JButton();
         BttBuscar = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
@@ -101,20 +73,9 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
 
         jLabelCodigo.setText("Codigo");
 
-        jLabelNombre.setText("Nombre");
-
-        jLabelPrecio.setText("Precio");
-
         TxtCodigo.setText("0");
 
-        TxtPrecio.setText("0.00");
-
-        BttEliminar.setText("Eliminar");
-
-        BttCancelar.setText("Cancelar");
-        BttCancelar.addActionListener(this::BttCancelarActionPerformed);
-
-        BttBuscar.setText("Buscar");
+        BttBuscar.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,28 +87,12 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
                         .addGap(153, 153, 153)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(BttEliminar)
-                        .addGap(31, 31, 31)
-                        .addComponent(BttCancelar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabelCodigo))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelPrecio)
-                                    .addComponent(jLabelNombre))))
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabelCodigo)
                         .addGap(34, 34, 34)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(TxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                                .addComponent(BttBuscar))
-                            .addComponent(TxtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(TxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addComponent(BttBuscar)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -160,19 +105,7 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
                     .addComponent(jLabelCodigo)
                     .addComponent(TxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BttBuscar))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNombre)
-                    .addComponent(TxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPrecio)
-                    .addComponent(TxtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BttEliminar)
-                    .addComponent(BttCancelar))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -188,26 +121,15 @@ public class EliminarProductoView extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BttCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BttCancelarActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_BttCancelarActionPerformed
     public void mostrarInformacion(String mensaje){
         JOptionPane.showMessageDialog(this, mensaje);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BttBuscar;
-    private javax.swing.JButton BttCancelar;
-    private javax.swing.JButton BttEliminar;
     private javax.swing.JTextField TxtCodigo;
-    private javax.swing.JTextField TxtNombre;
-    private javax.swing.JTextField TxtPrecio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCodigo;
-    private javax.swing.JLabel jLabelNombre;
-    private javax.swing.JLabel jLabelPrecio;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;

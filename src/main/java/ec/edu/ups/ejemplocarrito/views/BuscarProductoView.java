@@ -102,6 +102,7 @@ public class BuscarProductoView extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Buscar Producto");
 
         jLabel1.setText("Buscar Producto");
 

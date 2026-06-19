@@ -36,16 +36,27 @@ public class ProductoDAOMemoria implements ProductoDAO {
     }
 
     @Override
-    public void actualizar(int codigo, Producto producto) {
+    public boolean actualizar( Producto producto) {
         for(int i = 0; i< listaProducto.size();i++){
             Producto productoEncontrado = listaProducto.get(i);
-            if(productoEncontrado.getCodigo() == codigo){
+            if(productoEncontrado.getCodigo() == producto.getCodigo()){
                 listaProducto.set(i, producto);
-                break;
+                return true;
             }
         }
-        
+        return false;
     }
+    public boolean buscaractualizar( Producto producto) {
+        for(int i = 0; i< listaProducto.size();i++){
+            Producto productoEncontrado = listaProducto.get(i);
+            if(productoEncontrado.getCodigo() == producto.getCodigo()){
+                listaProducto.set(i, producto);
+                return true;
+            }
+        }
+        return false;
+    }
+   
 
     @Override
     public void eliminar(int codigo) {
@@ -53,6 +64,11 @@ public class ProductoDAOMemoria implements ProductoDAO {
          if(productoEncontrado != null){
              listaProducto.remove(productoEncontrado);
          }   
+    }
+
+    @Override
+    public List<Producto> listar() {
+        return listaProducto;
     }
     
 }

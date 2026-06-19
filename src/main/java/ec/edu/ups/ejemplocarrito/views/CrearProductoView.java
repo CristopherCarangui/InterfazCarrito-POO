@@ -85,6 +85,7 @@ public class CrearProductoView extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Crear Producto");
 
         jCodigo.setBackground(new java.awt.Color(102, 102, 102));
 

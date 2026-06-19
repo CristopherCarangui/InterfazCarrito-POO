@@ -89,16 +89,11 @@ public class ProductoController {
         int codigo = Integer.parseInt(actualizarProductoView.getTxtCodigo().getText());
         String nombre = actualizarProductoView.getTxtNombre().getText();
         double precio = Double.parseDouble(actualizarProductoView.getTxtPrecio().getText());
-        Producto producto = new Producto(codigo, nombre, precio);
-        productoDao.actualizar(codigo, producto);
-        if(actualizarProductoView.getBttBuscar()!= null){
-            actualizarProductoView.getTxtCodigo().setText(String.valueOf(producto.getCodigo()));
-            actualizarProductoView.getTxtNombre().setText(producto.getNombre());
-            actualizarProductoView.getTxtPrecio().setText(String.valueOf(producto.getPrecio()));
-            actualizarProductoView.mostrarInformacion("Producto actualizado exitosamente");
-        }else{
-            actualizarProductoView.mostrarInformacion("Producto no encontrado");
-        }
+        Producto producto = new Producto(codigo,nombre,precio);
+        productoDao.actualizar(producto);
+        actualizarProductoView.getTxtNombre().setText(producto.getNombre());
+        actualizarProductoView.getTxtPrecio().setText(String.valueOf(producto.getPrecio()));
+        actualizarProductoView.mostrarInformacion("Producto actualizado exitosamente");
         
             
         
@@ -122,13 +117,21 @@ public class ProductoController {
 
     public void eliminarProducto() {
         int codigo = Integer.parseInt(eliminarProductoView.getTxtCodigo().getText());
-        productoDao.eliminar(codigo);
-        String nombre1 = "Producto eliminado exitosamente";
-        eliminarProductoView.mostrarInformacion(nombre1);
+        if(productoDao.buscar(codigo) != null){
+            int opcion = JOptionPane.showConfirmDialog(eliminarProductoView,"Estas seguro que lo quieres eliminar");
+            if(opcion == JOptionPane.YES_OPTION){
+                productoDao.eliminar(codigo);
+                eliminarProductoView.mostrarInformacion("El producto fue eliminado existosamente");
+                
+            }
+        }else{
+            eliminarProductoView.mostrarInformacion("El producto no existe");
+        }
+        
     }
 
     public void configurarEventosEliminarProducto() {
-        eliminarProductoView.getBttEliminar().addActionListener(new ActionListener() {
+        eliminarProductoView.getBttBuscar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 eliminarProducto();

@@ -106,6 +106,7 @@ public class ActualizarProductoView extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Actualizar Productos");
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 

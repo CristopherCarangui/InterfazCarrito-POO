@@ -5,6 +5,7 @@
 package ec.edu.ups.carrito.dao;
 
 import ec.edu.ups.ejemplocarrito.models.Producto;
+import java.util.List;
 
 /**
  *
@@ -13,6 +14,7 @@ import ec.edu.ups.ejemplocarrito.models.Producto;
 public interface ProductoDAO {
     void crear(Producto producto);
     Producto buscar(int codigo);
-    void actualizar(int codigo, Producto producto);
+    boolean actualizar( Producto producto);
     void eliminar(int codigo);
+    List<Producto> listar();
 }

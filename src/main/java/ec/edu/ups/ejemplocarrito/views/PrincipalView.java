@@ -16,6 +16,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private BuscarProductoView buscarProductoView;
     private ActualizarProductoView actualizarProductoView;
     private EliminarProductoView eliminarProductoView;
+    private ListarProductosView listarProductosView;
     private ProductoController productoController;
     private ProductoDAOMemoria productoDAO;
 
@@ -33,6 +34,7 @@ public class PrincipalView extends javax.swing.JFrame {
         productoController = new ProductoController(actualizarProductoView,productoDAO);
         eliminarProductoView = new EliminarProductoView();
         productoController = new ProductoController(eliminarProductoView,productoDAO);
+        listarProductosView = new ListarProductosView();
     }
 
     /**
@@ -51,6 +53,7 @@ public class PrincipalView extends javax.swing.JFrame {
         buscarProductoMenuItem = new javax.swing.JMenuItem();
         eliminarProductoMenuItem = new javax.swing.JMenuItem();
         actualizarProductoMenuItem = new javax.swing.JMenuItem();
+        listarProductoMenuItem = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         agregarItemProductoMenuItem = new javax.swing.JMenuItem();
         eliminarItemProductoMenuItem = new javax.swing.JMenuItem();
@@ -60,26 +63,35 @@ public class PrincipalView extends javax.swing.JFrame {
         fileMenu.setMnemonic('f');
         fileMenu.setText("Productos");
 
+        crearProductoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         crearProductoMenuItem.setMnemonic('o');
         crearProductoMenuItem.setText("Crear");
         crearProductoMenuItem.addActionListener(this::crearProductoMenuItemActionPerformed);
         fileMenu.add(crearProductoMenuItem);
 
+        buscarProductoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         buscarProductoMenuItem.setMnemonic('s');
         buscarProductoMenuItem.setText("Buscar");
         buscarProductoMenuItem.setToolTipText("");
         buscarProductoMenuItem.addActionListener(this::buscarProductoMenuItemActionPerformed);
         fileMenu.add(buscarProductoMenuItem);
 
+        eliminarProductoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         eliminarProductoMenuItem.setMnemonic('a');
         eliminarProductoMenuItem.setText("Eliminar");
         eliminarProductoMenuItem.addActionListener(this::eliminarProductoMenuItemActionPerformed);
         fileMenu.add(eliminarProductoMenuItem);
 
+        actualizarProductoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         actualizarProductoMenuItem.setMnemonic('x');
         actualizarProductoMenuItem.setText("Actualizar");
         actualizarProductoMenuItem.addActionListener(this::actualizarProductoMenuItemActionPerformed);
         fileMenu.add(actualizarProductoMenuItem);
+
+        listarProductoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        listarProductoMenuItem.setText("ListarProducto");
+        listarProductoMenuItem.addActionListener(this::listarProductoMenuItemActionPerformed);
+        fileMenu.add(listarProductoMenuItem);
 
         ProductoMenu.add(fileMenu);
 
@@ -147,6 +159,16 @@ public class PrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_eliminarProductoMenuItemActionPerformed
 
+    private void listarProductoMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarProductoMenuItemActionPerformed
+        // TODO add your handling code here:
+        if(!listarProductosView.isVisible()){
+            desktopPane.remove(listarProductosView);
+            listarProductosView.setVisible(true);
+            desktopPane.add(listarProductosView);
+            
+        }
+    }//GEN-LAST:event_listarProductoMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -193,6 +215,7 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarItemProductoMenuItem;
     private javax.swing.JMenuItem eliminarProductoMenuItem;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenuItem listarProductoMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
