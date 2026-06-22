@@ -5,6 +5,8 @@
 package ec.edu.ups.ejemplocarrito.views;
 import ec.edu.ups.carrito.dao.ProductoDAOMemoria;
 import ec.edu.ups.ejemplocarrito.controllers.ProductoController;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 
 /**
@@ -27,16 +29,25 @@ public class PrincipalView extends javax.swing.JFrame {
         initComponents();
         crearProductoView = new CrearProductoView();
         productoDAO = new ProductoDAOMemoria();
-        productoController = new ProductoController(crearProductoView,productoDAO);
         buscarProductoView = new BuscarProductoView();
-        productoController = new ProductoController(buscarProductoView,productoDAO);
         actualizarProductoView = new ActualizarProductoView();
-        productoController = new ProductoController(actualizarProductoView,productoDAO);
         eliminarProductoView = new EliminarProductoView();
-        productoController = new ProductoController(eliminarProductoView,productoDAO);
         listarProductosView = new ListarProductosView();
+        productoController = new ProductoController(productoDAO,crearProductoView,buscarProductoView,actualizarProductoView,eliminarProductoView,listarProductosView);
     }
-
+    public void cambiarIdioma(Locale locale){
+        ResourceBundle Bundle = ResourceBundle.getBundle("ec.edu.ups.ejemplocarrito.i18n.mensajes", locale);
+        productosMenu.setText(Bundle.getString("ProductoMenu"));
+        crearProductoMenuItem.setText(Bundle.getString("crearMenuItem"));
+        buscarProductoMenuItem.setText(Bundle.getString("buscarMenuItem"));
+        eliminarProductoMenuItem.setText(Bundle.getString("eliminarMenuItem"));
+        actualizarProductoMenuItem.setText("actualizarMenuItem");
+        listarProductoMenuItem.setText("listarMenuItem");
+        // OTRO MENU
+        CarritoMenu.setText(Bundle.getString("carritoMenu"));
+        agregarItemProductoMenuItem.setText(Bundle.getString("agregarMenuItem"));
+        eliminarItemProductoMenuItem.setText(Bundle.getString("eliminarMenuItem"));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,65 +59,80 @@ public class PrincipalView extends javax.swing.JFrame {
 
         desktopPane = new javax.swing.JDesktopPane();
         ProductoMenu = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
+        productosMenu = new javax.swing.JMenu();
         crearProductoMenuItem = new javax.swing.JMenuItem();
         buscarProductoMenuItem = new javax.swing.JMenuItem();
         eliminarProductoMenuItem = new javax.swing.JMenuItem();
         actualizarProductoMenuItem = new javax.swing.JMenuItem();
         listarProductoMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
+        CarritoMenu = new javax.swing.JMenu();
         agregarItemProductoMenuItem = new javax.swing.JMenuItem();
         eliminarItemProductoMenuItem = new javax.swing.JMenuItem();
+        IdiomaMenu = new javax.swing.JMenu();
+        idiomaEspaniolMenuItem = new javax.swing.JMenuItem();
+        idiomaEnglishlMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("Productos");
+        productosMenu.setMnemonic('f');
+        productosMenu.setText("Productos");
 
         crearProductoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         crearProductoMenuItem.setMnemonic('o');
         crearProductoMenuItem.setText("Crear");
         crearProductoMenuItem.addActionListener(this::crearProductoMenuItemActionPerformed);
-        fileMenu.add(crearProductoMenuItem);
+        productosMenu.add(crearProductoMenuItem);
 
         buscarProductoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         buscarProductoMenuItem.setMnemonic('s');
         buscarProductoMenuItem.setText("Buscar");
         buscarProductoMenuItem.setToolTipText("");
         buscarProductoMenuItem.addActionListener(this::buscarProductoMenuItemActionPerformed);
-        fileMenu.add(buscarProductoMenuItem);
+        productosMenu.add(buscarProductoMenuItem);
 
         eliminarProductoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         eliminarProductoMenuItem.setMnemonic('a');
         eliminarProductoMenuItem.setText("Eliminar");
         eliminarProductoMenuItem.addActionListener(this::eliminarProductoMenuItemActionPerformed);
-        fileMenu.add(eliminarProductoMenuItem);
+        productosMenu.add(eliminarProductoMenuItem);
 
         actualizarProductoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         actualizarProductoMenuItem.setMnemonic('x');
         actualizarProductoMenuItem.setText("Actualizar");
         actualizarProductoMenuItem.addActionListener(this::actualizarProductoMenuItemActionPerformed);
-        fileMenu.add(actualizarProductoMenuItem);
+        productosMenu.add(actualizarProductoMenuItem);
 
         listarProductoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         listarProductoMenuItem.setText("ListarProducto");
         listarProductoMenuItem.addActionListener(this::listarProductoMenuItemActionPerformed);
-        fileMenu.add(listarProductoMenuItem);
+        productosMenu.add(listarProductoMenuItem);
 
-        ProductoMenu.add(fileMenu);
+        ProductoMenu.add(productosMenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Carrito");
+        CarritoMenu.setMnemonic('e');
+        CarritoMenu.setText("Carrito");
 
         agregarItemProductoMenuItem.setMnemonic('t');
         agregarItemProductoMenuItem.setText("Agregar");
-        editMenu.add(agregarItemProductoMenuItem);
+        CarritoMenu.add(agregarItemProductoMenuItem);
 
         eliminarItemProductoMenuItem.setMnemonic('y');
         eliminarItemProductoMenuItem.setText("Eliminar");
-        editMenu.add(eliminarItemProductoMenuItem);
+        CarritoMenu.add(eliminarItemProductoMenuItem);
 
-        ProductoMenu.add(editMenu);
+        ProductoMenu.add(CarritoMenu);
+
+        IdiomaMenu.setText("Idioma");
+
+        idiomaEspaniolMenuItem.setText("Español");
+        idiomaEspaniolMenuItem.addActionListener(this::idiomaEspaniolMenuItemActionPerformed);
+        IdiomaMenu.add(idiomaEspaniolMenuItem);
+
+        idiomaEnglishlMenuItem.setText("Ingles");
+        idiomaEnglishlMenuItem.addActionListener(this::idiomaEnglishlMenuItemActionPerformed);
+        IdiomaMenu.add(idiomaEnglishlMenuItem);
+
+        ProductoMenu.add(IdiomaMenu);
 
         setJMenuBar(ProductoMenu);
 
@@ -169,6 +195,18 @@ public class PrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_listarProductoMenuItemActionPerformed
 
+    private void idiomaEspaniolMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idiomaEspaniolMenuItemActionPerformed
+        // TODO add your handling code here:
+        Locale locale = new Locale("es","EC");
+        cambiarIdioma(locale);
+    }//GEN-LAST:event_idiomaEspaniolMenuItemActionPerformed
+
+    private void idiomaEnglishlMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idiomaEnglishlMenuItemActionPerformed
+        // TODO add your handling code here:
+        Locale locale = new Locale("en","US");
+        cambiarIdioma(locale);
+    }//GEN-LAST:event_idiomaEnglishlMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -205,17 +243,20 @@ public class PrincipalView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu CarritoMenu;
+    private javax.swing.JMenu IdiomaMenu;
     private javax.swing.JMenuBar ProductoMenu;
     private javax.swing.JMenuItem actualizarProductoMenuItem;
     private javax.swing.JMenuItem agregarItemProductoMenuItem;
     private javax.swing.JMenuItem buscarProductoMenuItem;
     private javax.swing.JMenuItem crearProductoMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem eliminarItemProductoMenuItem;
     private javax.swing.JMenuItem eliminarProductoMenuItem;
-    private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenuItem idiomaEnglishlMenuItem;
+    private javax.swing.JMenuItem idiomaEspaniolMenuItem;
     private javax.swing.JMenuItem listarProductoMenuItem;
+    private javax.swing.JMenu productosMenu;
     // End of variables declaration//GEN-END:variables
 
 }

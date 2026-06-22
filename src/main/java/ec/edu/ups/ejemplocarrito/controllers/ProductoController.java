@@ -13,6 +13,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import ec.edu.ups.carrito.dao.ProductoDAO;
+import ec.edu.ups.carrito.dao.ProductoDAOMemoria;
+import java.util.List;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 /**
  *
  * @author Usuario
@@ -26,11 +31,22 @@ public class ProductoController {
     private EliminarProductoView eliminarProductoView;
     private ListarProductosView listarProductosView;
 
-    public ProductoController(CrearProductoView crearProductoView, ProductoDAO productoDao) {
-        this.crearProductoView = crearProductoView;
+    public ProductoController(ProductoDAO productoDao, CrearProductoView crearProductoView, BuscarProductoView buscarProductoView, ActualizarProductoView actualizarProductoView, EliminarProductoView eliminarProductoView, ListarProductosView listarProductosView) {
         this.productoDao = productoDao;
+        this.crearProductoView = crearProductoView;
+        this.buscarProductoView = buscarProductoView;
+        this.actualizarProductoView = actualizarProductoView;
+        this.eliminarProductoView = eliminarProductoView;
+        this.listarProductosView = listarProductosView;
         configurarEventosCrearProducto();
+        configurarEventosBuscarProducto();
+        configurarEventosActualizarProducto();
+        configurarEventosEliminarProducto();
+        configurarEventosListarProducto();
     }
+
+    
+    
 
     public void crearProducto() {
         int codigo = Integer.parseInt(crearProductoView.getTxtCodigo().getText());
@@ -52,11 +68,7 @@ public class ProductoController {
         });
     }
 
-    public ProductoController(BuscarProductoView buscarProductoView, ProductoDAO productoDao) {
-        this.buscarProductoView = buscarProductoView;
-        this.productoDao = productoDao;
-        configurarEventosBuscarProducto();
-    }
+  
 
     public void buscarProducto() {
         int codigo = Integer.parseInt(buscarProductoView.getTxtBuscarProducto().getText());
@@ -81,11 +93,7 @@ public class ProductoController {
         });
     }
 
-    public ProductoController(ActualizarProductoView actualizarProductoView, ProductoDAO productoDao) {
-        this.actualizarProductoView = actualizarProductoView;
-        this.productoDao = productoDao;
-        configurarEventosActualizarProducto();
-    }
+    
 
     public void actualizarProducto() {
         int codigo = Integer.parseInt(actualizarProductoView.getTxtCodigo().getText());
@@ -111,11 +119,7 @@ public class ProductoController {
         });
     }
 
-    public ProductoController(EliminarProductoView eliminarProductoView, ProductoDAO productoDao) {
-        this.eliminarProductoView = eliminarProductoView;
-        this.productoDao = productoDao;
-        configurarEventosEliminarProducto();
-    }
+ 
 
     public void eliminarProducto() {
         int codigo = Integer.parseInt(eliminarProductoView.getTxtCodigo().getText());
@@ -141,21 +145,17 @@ public class ProductoController {
         });
     }
 
-    public ProductoController(ListarProductosView listarProductosView) {
-        this.listarProductosView = listarProductosView;
-        configurarEventosListarProducto();
-    }
+  
     
-    public void listarProducto(){
-        listarProductosView.cargarDatos(productoDao.listar());
+    public void listarProductos(){
+        List<Producto> lista = productoDao.listar();
+        listarProductosView.cargarDatos(lista);
     }
     public void configurarEventosListarProducto(){
         listarProductosView.getBttAgregar().addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
-                listarProductosView.getBttAgregar().setEnabled(false);
-                listarProducto();
-                listarProductosView.getBttAgregar().setEnabled(true);
+            public void actionPerformed(ActionEvent e) {
+                listarProductos();
             }
         });
     }
