@@ -8,6 +8,7 @@ import ec.edu.ups.ejemplocarrito.views.BuscarProductoView;
 import ec.edu.ups.ejemplocarrito.views.ActualizarProductoView;
 import ec.edu.ups.ejemplocarrito.views.EliminarProductoView;
 import ec.edu.ups.ejemplocarrito.models.Producto;
+import ec.edu.ups.ejemplocarrito.views.ListarProductosView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -23,6 +24,7 @@ public class ProductoController {
     private BuscarProductoView buscarProductoView;
     private ActualizarProductoView actualizarProductoView;
     private EliminarProductoView eliminarProductoView;
+    private ListarProductosView listarProductosView;
 
     public ProductoController(CrearProductoView crearProductoView, ProductoDAO productoDao) {
         this.crearProductoView = crearProductoView;
@@ -139,4 +141,22 @@ public class ProductoController {
         });
     }
 
+    public ProductoController(ListarProductosView listarProductosView) {
+        this.listarProductosView = listarProductosView;
+        configurarEventosListarProducto();
+    }
+    
+    public void listarProducto(){
+        listarProductosView.cargarDatos(productoDao.listar());
+    }
+    public void configurarEventosListarProducto(){
+        listarProductosView.getBttAgregar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                listarProductosView.getBttAgregar().setEnabled(false);
+                listarProducto();
+                listarProductosView.getBttAgregar().setEnabled(true);
+            }
+        });
+    }
 }

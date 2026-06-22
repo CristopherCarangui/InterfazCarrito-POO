@@ -5,6 +5,7 @@
 package ec.edu.ups.ejemplocarrito.views;
 import ec.edu.ups.ejemplocarrito.models.Producto;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -36,6 +37,16 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
         }
         
     }
+
+    public JButton getBttAgregar() {
+        return BttAgregar;
+    }
+
+    public void setBttAgregar(JButton BttAgregar) {
+        this.BttAgregar = BttAgregar;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,6 +58,7 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         TblProducto = new javax.swing.JTable();
+        BttAgregar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -67,6 +79,8 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(TblProducto);
 
+        BttAgregar.setText("Agregar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,13 +88,19 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 381, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(BttAgregar)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BttAgregar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,6 +108,7 @@ public class ListarProductosView extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BttAgregar;
     private javax.swing.JTable TblProducto;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
