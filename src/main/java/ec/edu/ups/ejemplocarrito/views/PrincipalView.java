@@ -7,6 +7,8 @@ import ec.edu.ups.carrito.dao.ProductoDAOMemoria;
 import ec.edu.ups.ejemplocarrito.controllers.ProductoController;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentAdapter;
 
 
 /**
@@ -27,6 +29,8 @@ public class PrincipalView extends javax.swing.JFrame {
      */
     public PrincipalView() {
         initComponents();
+        setLocationRelativeTo(null);
+        //setExtendedState();
         crearProductoView = new CrearProductoView();
         productoDAO = new ProductoDAOMemoria();
         buscarProductoView = new BuscarProductoView();
@@ -34,9 +38,17 @@ public class PrincipalView extends javax.swing.JFrame {
         eliminarProductoView = new EliminarProductoView();
         listarProductosView = new ListarProductosView();
         productoController = new ProductoController(productoDAO,crearProductoView,buscarProductoView,actualizarProductoView,eliminarProductoView,listarProductosView);
+        ImagenFondo.setBounds(0, 0, desktopPane.getWidth(), desktopPane.getHeight());
+        desktopPane.add(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentRezized(java.awt.event.ComponentEvent.evt){
+                ImagenFondo.setBounds(0, 0, desktopPane.getWidth(), desktopPane.getHeight());
+                
+            }
+        });
     }
     public void cambiarIdioma(Locale locale){
-        ResourceBundle Bundle = ResourceBundle.getBundle("ec.edu.ups.ejemplocarrito.i18n.mensajes", locale);
+        ResourceBundle Bundle = ResourceBundle.getBundle("ec.edu.ups.ejemplocarrito.i18n", locale);
         productosMenu.setText(Bundle.getString("ProductoMenu"));
         crearProductoMenuItem.setText(Bundle.getString("crearMenuItem"));
         buscarProductoMenuItem.setText(Bundle.getString("buscarMenuItem"));
@@ -48,6 +60,7 @@ public class PrincipalView extends javax.swing.JFrame {
         agregarItemProductoMenuItem.setText(Bundle.getString("agregarMenuItem"));
         eliminarItemProductoMenuItem.setText(Bundle.getString("eliminarMenuItem"));
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,7 +70,9 @@ public class PrincipalView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         desktopPane = new javax.swing.JDesktopPane();
+        ImagenFondo = new javax.swing.JLabel();
         ProductoMenu = new javax.swing.JMenuBar();
         productosMenu = new javax.swing.JMenu();
         crearProductoMenuItem = new javax.swing.JMenuItem();
@@ -72,7 +87,23 @@ public class PrincipalView extends javax.swing.JFrame {
         idiomaEspaniolMenuItem = new javax.swing.JMenuItem();
         idiomaEnglishlMenuItem = new javax.swing.JMenuItem();
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        ImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Real-Madrid-logo.png"))); // NOI18N
+        ImagenFondo.setText("jLabel1");
+        desktopPane.add(ImagenFondo);
+        ImagenFondo.setBounds(-20, 0, 420, 280);
 
         productosMenu.setMnemonic('f');
         productosMenu.setText("Productos");
@@ -140,11 +171,11 @@ public class PrincipalView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
         );
 
         pack();
@@ -199,12 +230,14 @@ public class PrincipalView extends javax.swing.JFrame {
         // TODO add your handling code here:
         Locale locale = new Locale("es","EC");
         cambiarIdioma(locale);
+        crearProductoView.cambiarIdioma(locale);
     }//GEN-LAST:event_idiomaEspaniolMenuItemActionPerformed
 
     private void idiomaEnglishlMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idiomaEnglishlMenuItemActionPerformed
         // TODO add your handling code here:
         Locale locale = new Locale("en","US");
         cambiarIdioma(locale);
+        crearProductoView.cambiarIdioma(locale);
     }//GEN-LAST:event_idiomaEnglishlMenuItemActionPerformed
 
     /**
@@ -245,6 +278,7 @@ public class PrincipalView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu CarritoMenu;
     private javax.swing.JMenu IdiomaMenu;
+    private javax.swing.JLabel ImagenFondo;
     private javax.swing.JMenuBar ProductoMenu;
     private javax.swing.JMenuItem actualizarProductoMenuItem;
     private javax.swing.JMenuItem agregarItemProductoMenuItem;
@@ -255,8 +289,11 @@ public class PrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminarProductoMenuItem;
     private javax.swing.JMenuItem idiomaEnglishlMenuItem;
     private javax.swing.JMenuItem idiomaEspaniolMenuItem;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem listarProductoMenuItem;
     private javax.swing.JMenu productosMenu;
     // End of variables declaration//GEN-END:variables
+
+    
 
 }

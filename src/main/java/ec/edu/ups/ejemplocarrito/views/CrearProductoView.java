@@ -4,9 +4,12 @@
  */
 package ec.edu.ups.ejemplocarrito.views;
 
+import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -85,7 +88,7 @@ public class CrearProductoView extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Crear Producto");
+        setTitle("CrearProducto");
 
         jCodigo.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -180,6 +183,20 @@ public class CrearProductoView extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BttCancelarActionPerformed
     public void mostrarInformacion(String mensaje){
         JOptionPane.showMessageDialog(this, mensaje);
+    }
+    
+    public void cambiarIdioma(Locale locale){ 
+        ResourceBundle bundle = ResourceBundle.getBundle("ec.edu.ups.ejemplocarrito.i18n", locale);
+        jLabel2.setText(bundle.getString("tituloPanel"));
+        jLabel1.setText(bundle.getString("labelCodigoProducto"));
+        jNombre.setText(bundle.getString("labelNombreProducto"));
+        jPrecio.setText("labelPrecioProducto");
+        BttAceptar.setText(bundle.getString("botonAceptar"));
+        BttCancelar.setText(bundle.getString("botonCancelar"));
+        setTitle(bundle.getString("tituloVentana"));
+        
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
